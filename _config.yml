@@ -3,18 +3,18 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: niz's Blog
-subtitle: ""
-description: ""
+title: nizw0.
+subtitle:
+description:
 keywords:
 author: niz
 language: zh-TW
-timezone: "Asia/Taipei"
+timezone: 'Asia/Taipei'
 
 # URL
 url: https://blog.nizw0.com
 root: /
-permalink: :year/:month/:day/:title/
+permalink: posts/:hash/
 permalink_defaults:
 pretty_urls:
   trailing_index: true
@@ -37,7 +37,7 @@ titlecase: false
 external_link:
   enable: true
   field: site
-  exclude: ""
+  exclude: ''
 filename_case: 0
 render_drafts: false
 post_asset_folder: false
@@ -45,20 +45,20 @@ relative_link: false
 future: true
 highlight:
   enable: true
-  line_number: true
+  line_number: false
   auto_detect: false
-  tab_replace: ""
+  tab_replace: ''
   wrap: true
   hljs: false
 prismjs:
   enable: false
   preprocess: true
-  line_number: true
-  tab_replace: ""
+  line_number: false
+  tab_replace: ''
 
 # Home page setting
 index_generator:
-  path: ""
+  path: ''
   per_page: 10
   order_by: -date
 
@@ -75,7 +75,7 @@ meta_generator: true
 ## http://momentjs.com/docs/#/displaying/format/
 date_format: YYYY-MM-DD
 time_format: HH:mm:ss
-updated_option: "mtime"
+updated_option: 'mtime'
 
 # Pagination
 per_page: 10

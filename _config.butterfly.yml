@@ -3,42 +3,50 @@
 # --------------------------------------
 
 menu:
-  # Home: / || fas fa-home
-  # Archives: /archives/ || fas fa-archive
-  # Tags: /tags/ || fas fa-tags
-  # Categories: /categories/ || fas fa-folder-open
-  # List||fas fa-list:
-  #   Music: /music/ || fas fa-music
-  #   Movie: /movies/ || fas fa-video
+  首頁: / || fas fa-home
+  目錄 || fas fa-list:
+    歸檔: /archives/ || fas fa-archive
+    標籤: /tags/ || fas fa-tags
+    分類: /categories/ || fas fa-folder-open
+    # Music: /music/ || fas fa-music
+    # Movie: /movies/ || fas fa-video
   # Link: /link/ || fas fa-link
-  # About: /about/ || fas fa-heart
+  關於我: /about/ || fas fa-user
+
+nav:
+  logo: # image
+  display_title: false
+  fixed: false # fixed navigation bar
 
 # Code Blocks (代碼相關)
 # --------------------------------------
 
-highlight_theme: light #  darker / pale night / light / ocean / mac / mac light / false
+highlight_theme: darker #  darker / pale night / light / ocean / mac / mac light / false
 highlight_copy: true # copy button
 highlight_lang: true # show the code language
 highlight_shrink: false # true: shrink the code blocks / false: expand the code blocks | none: expand code blocks and hide the button
-highlight_height_limit: false # unit: px
-code_word_wrap: false
+highlight_height_limit: 200 # unit: px
+code_word_wrap: true
 
 # copy settings
 # copyright: Add the copyright information after copied content (複製的內容後面加上版權信息)
 copy:
-  enable: true
+  enable: false
   copyright:
-    enable: false
+    enable: true
     limit_count: 50
 
 # social settings (社交圖標設置)
 # formal:
 #   icon: link || the description
 social:
-  # fab fa-github: https://github.com/xxxxx || Github
-  # fas fa-envelope: mailto:xxxxxx@gmail.com || Email
+  fab fa-github: https://github.com/nizw0 || Github
+  fab fa-linkedin: https://www.linkedin.com/in/cewu || LinkedIn
+  fas fa-code: https://leetcode.com/Nizw0/|| LeetCode
+  fas fa-envelope: mailto:ce.wu@outlook.com || Email
 
 # search (搜索)
+# see https://butterfly.js.org/posts/ceeb73f/#搜索系統
 # --------------------------------------
 
 # Algolia search
@@ -50,6 +58,8 @@ algolia_search:
 # Local search
 local_search:
   enable: false
+  preload: false
+  CDN:
 
 # Math (數學)
 # --------------------------------------
@@ -73,21 +83,21 @@ katex:
 # --------------------------------------
 
 # Favicon（網站圖標）
-favicon: /img/favicon.png
+favicon: /assets/favicon.ico
 
 # Avatar (頭像)
 avatar:
-  img: https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png
+  img: /assets/avatar.png
   effect: false
 
 # Disable all banner image
 disable_top_img: false
 
 # The banner image of home page
-index_img:
+index_img: '#000000'
 
 # If the banner of page not setting, it will show the top_img
-default_top_img:
+default_top_img: '#000000'
 
 # The banner image of archive page
 archive_img:
@@ -129,7 +139,7 @@ error_img:
 
 # A simple 404 page
 error_404:
-  enable: false
+  enable: true
   subtitle: 'Page Not Found'
   background: https://i.loli.net/2020/05/19/aKOcLiyPl2JQdFD.png
 
@@ -138,7 +148,7 @@ post_meta:
     date_type: created # created or updated or both 主頁文章日期是創建日或者更新日或都顯示
     date_format: date # date/relative 顯示日期還是相對日期
     categories: true # true or false 主頁是否顯示分類
-    tags: false # true or false 主頁是否顯示標籤
+    tags: true # true or false 主頁是否顯示標籤
     label: true # true or false 顯示描述性文字
   post:
     date_type: both # created or updated or both 文章頁日期是創建日或者更新日或都顯示
@@ -148,6 +158,7 @@ post_meta:
     label: true # true or false 顯示描述性文字
 
 # wordcount (字數統計)
+# see https://butterfly.js.org/posts/ceeb73f/#字數統計
 wordcount:
   enable: false
   post_wordcount: true
@@ -164,8 +175,12 @@ index_post_content:
   length: 500 # if you set method to 2 or 3, the length need to config
 
 # anchor
-# when you scroll in post, the URL will update according to header id.
-anchor: false
+anchor:
+  button:
+    enable: false
+    always_show: false
+    icon: # the unicode value of Font Awesome icon, such as '\3423'
+  auto_update: false # when you scroll in post, the URL will update according to header id.
 
 # Post
 # --------------------------------------
@@ -177,10 +192,12 @@ toc:
   number: true
   expand: false
   style_simple: false # for post
+  scroll_percent: true
 
 post_copyright:
   enable: true
   decode: false
+  author_href:
   license: CC BY-NC-SA 4.0
   license_url: https://creativecommons.org/licenses/by-nc-sa/4.0/
 
@@ -206,8 +223,8 @@ post_edit:
 # Related Articles
 related_post:
   enable: true
-  limit: 6 # Number of posts displayed
-  date_type: created # or created or updated 文章日期顯示創建日或者更新日
+  limit: 3 # Number of posts displayed
+  date_type: updated # or created or updated 文章日期顯示創建日或者更新日
 
 # figcaption (圖片描述文字)
 photofigcaption: false
@@ -217,13 +234,13 @@ photofigcaption: false
 # 1: The 'next post' will link to old post
 # 2: The 'next post' will link to new post
 # false: disable pagination
-post_pagination: 1
+post_pagination: false
 
 # Displays outdated notice for a post (文章過期提醒)
 noticeOutdate:
   enable: false
   style: flat # style: simple/flat
-  limit_day: 500 # When will it be shown
+  limit_day: 365 # When will it be shown
   position: top # position: top/bottom
   message_prev: It has been
   message_next: days since the last update, the content of the article may be outdated.
@@ -241,7 +258,7 @@ addThis:
 # https://github.com/overtrue/share.js
 sharejs:
   enable: true
-  sites: facebook,twitter,wechat,weibo,qq
+  sites: facebook,twitter
 
 # AddToAny
 # https://www.addtoany.com/
@@ -254,7 +271,7 @@ addtoany:
 
 comments:
   # Up to two comments system, the first will be shown as default
-  # Choose: Disqus/Disqusjs/Livere/Gitalk/Valine/Waline/Utterances/Facebook Comments/Twikoo/Giscus
+  # Choose: Disqus/Disqusjs/Livere/Gitalk/Valine/Waline/Utterances/Facebook Comments/Twikoo/Giscus/Remark42/Artalk
   use: # Valine,Disqus
   text: true # Display the comment name next to the button
   # lazyload: The comment system will be load when comment element enters the browser's viewport.
@@ -308,7 +325,7 @@ valine:
 waline:
   serverURL: # Waline server address url
   bg: # waline background
-  visitor: false
+  pageview: false
   option:
 
 # utterances
@@ -328,7 +345,7 @@ facebook_comments:
   user_id: # optional
   pageSize: 10 # The number of comments to show
   order_by: social # social/time/reverse_time
-  lang: en_US # Language en_US/zh_CN/zh_TW and so on
+  lang: zh_TW # Language en_US/zh_CN/zh_TW and so on
 
 # Twikoo
 # https://github.com/imaegoo/twikoo
@@ -347,6 +364,21 @@ giscus:
   theme:
     light: light
     dark: dark
+  option:
+
+# Remark42
+# https://remark42.com/docs/configuration/frontend/
+remark42:
+  host: # Your Host URL
+  siteId: # Your Site ID
+  option:
+
+# Artalk
+# https://artalk.js.org/guide/frontend/config.html
+artalk:
+  server:
+  site:
+  visitor: false
   option:
 
 # Chat Services
@@ -372,7 +404,7 @@ tidio:
   public_key:
 
 # daovoice
-# http://daovoice.io/
+# http://dashboard.daovoice.io/app
 daovoice:
   enable: false
   app_id:
@@ -389,12 +421,19 @@ crisp:
   enable: false
   website_id:
 
+# messenger
+# https://developers.facebook.com/docs/messenger-platform/discovery/facebook-chat-plugin/
+messenger:
+  enable: false
+  pageID:
+  lang: zh_TW # Language en_US/zh_CN/zh_TW and so on
+
 # Footer Settings
 # --------------------------------------
 footer:
   owner:
     enable: true
-    since: 2020
+    since: 2023
   custom_text:
   copyright: true # Copyright of theme and framework
 
@@ -408,10 +447,6 @@ baidu_analytics:
 # Google Analytics
 # https://analytics.google.com/analytics/web/
 google_analytics:
-
-# CNZZ Analytics
-# https://www.umeng.com/
-cnzz_analytics:
 
 # Cloudflare Analytics
 # https://www.cloudflare.com/zh-tw/web-analytics/
@@ -468,6 +503,8 @@ site_verification:
 #   blockquote_padding_color: "#49b1f5"
 #   blockquote_background_color: "#49b1f5"
 #   scrollbar_color: "#49b1f5"
+#   meta_theme_color_light: "ffffff"
+#   meta_theme_color_dark: "#0d0d0d"
 
 # The top_img settings of home page
 # default: top img - full screen, site info - middle (默認top_img全屏，site_info在中間)
@@ -485,10 +522,10 @@ tag_ui: # 留空或 index
 # Website Background (設置網站背景)
 # can set it to color or image (可設置圖片 或者 顔色)
 # The formal of image: url(http://xxxxxx.com/xxx.jpg)
-background:
+background: '#000000'
 
 # Footer Background
-footer_bg: false
+footer_bg: true
 
 # the position of bottom right button/default unit: px (右下角按鈕距離底部的距離/默認單位為px)
 rightside-bottom:
@@ -511,7 +548,7 @@ canvas_ribbon:
 
 # Fluttering Ribbon (動態彩帶)
 canvas_fluttering_ribbon:
-  enable: false
+  enable: true
   mobile: false
 
 # canvas_nest
@@ -556,11 +593,11 @@ ClickShowText:
 
 # Default display mode (網站默認的顯示模式)
 # light (default) / dark
-display_mode: light
+display_mode: dark
 
 # Beautify (美化頁面顯示)
 beautify:
-  enable: false
+  enable: true
   field: post # site/post
   title-prefix-icon: # '\f0c1'
   title-prefix-icon-color: # '#F47466'
@@ -590,12 +627,18 @@ subtitle:
   enable: false
   # Typewriter Effect (打字效果)
   effect: true
-  # loop (循環打字)
-  loop: true
+  # Customize typed.js (配置typed.js)
+  # https://github.com/mattboldt/typed.js/#customization
+  typed_option:
+    typeSpeed: 100
+    startDelay: 300
+    backSpeed: 50
+    shuffle: true
+    loop: true
   # source 調用第三方服務
   # source: false 關閉調用
   # source: 1  調用一言網的一句話（簡體） https://hitokoto.cn/
-  # source: 2  調用一句網（簡體） http://yijuzhan.com/
+  # source: 2  調用一句網（簡體） https://yijuzhan.com/
   # source: 3  調用今日詩詞（簡體） https://www.jinrishici.com/
   # subtitle 會先顯示 source , 再顯示 sub 的內容
   source: false
@@ -603,7 +646,14 @@ subtitle:
   sub:
 
 # Loading Animation (加載動畫)
-preloader: false
+preloader:
+  enable: false
+  # source
+  # 1. fullpage-loading
+  # 2. pace (progress bar)
+  source: 1
+  # pace theme (see https://codebyzach.github.io/pace/)
+  pace_css_url:
 
 # aside (側邊欄)
 # --------------------------------------
@@ -612,18 +662,22 @@ aside:
   enable: true
   hide: false
   button: true
-  mobile: true # display on mobile
-  position: right # left or right
+  mobile: false # display on mobile
+  position: left # left or right
+  display:
+    archive: true
+    tag: true
+    category: true
   card_author:
     enable: true
-    description:
+    description: web dev.
     button:
-      enable: true
+      enable: false
       icon: fab fa-github
-      text: Follow Me
-      link: https://github.com/xxxxxx
+      text: Github
+      link: https://github.com/nizw0
   card_announcement:
-    enable: true
+    enable: false
     content: This is my Blog
   card_recent_post:
     enable: true
@@ -637,13 +691,13 @@ aside:
     sort_order: # Don't modify the setting unless you know how it works
   card_tags:
     enable: true
-    limit: 40 # if set 0 will show all
+    limit: 10 # if set 0 will show all
     color: false
     sort_order: # Don't modify the setting unless you know how it works
   card_archives:
     enable: true
     type: monthly # yearly or monthly
-    format: MMMM YYYY # eg: YYYY年MM月
+    format: YYYY/MM # eg: YYYY年MM月
     order: -1 # Sort of order. 1, asc for ascending; -1, desc for descending
     limit: 8 # if set 0 will show all
     sort_order: # Don't modify the setting unless you know how it works
@@ -663,8 +717,8 @@ busuanzi:
 # Time difference between publish date and now (網頁運行時間)
 # Formal: Month/Day/Year Time or Year/Month/Day Time
 runtimeshow:
-  enable: false
-  publish_date:
+  enable: true
+  publish_date: 2023/01/01
 
 # Aside widget - Newest Comments
 newest_comments:
@@ -704,6 +758,9 @@ darkmode:
   # autoChangeMode: 2  Switch dark mode between 6 pm to 6 am
   # autoChangeMode: false
   autoChangeMode: false
+
+# show scroll percent in scroll-to-top button
+rightside_scroll_percent: false
 
 # Don't modify the following settings unless you know how they work (非必要請不要修改 )
 # Choose: readmode,translate,darkmode,hideAside,toc,chat,comment
@@ -773,8 +830,8 @@ aplayerInject:
 # position 彈窗位置
 # 可選 top-left / top-center / top-right / bottom-left / bottom-center / bottom-right
 snackbar:
-  enable: false
-  position: bottom-left
+  enable: true
+  position: bottom-right
   bg_light: '#49b1f5' # The background color of Toast Notification in light mode
   bg_dark: '#1f1f1f' # The background color of Toast Notification in dark mode
 
@@ -809,7 +866,16 @@ lazyload:
 
 # Open graph meta tags
 # https://developers.facebook.com/docs/sharing/webmasters/
-Open_Graph_meta: true
+Open_Graph_meta:
+  enable: true
+  option:
+    # twitter_card:
+    # twitter_image:
+    # twitter_id:
+    # twitter_site:
+    # google_plus:
+    # fb_admins:
+    # fb_app_id:
 
 # Add the vendor prefixes to ensure compatibility
 css_prefix: true
@@ -827,88 +893,73 @@ inject:
 # Don't modify the following settings unless you know how they work
 # 非必要請不要修改
 CDN:
-  # main
-  main_css:
-  main:
-  utils:
+  # The CDN provider of internal scripts (主題內部 js 的 cdn 配置)
+  # option: local/jsdelivr/unpkg/cdnjs/custom
+  # Dev version can only choose. ( dev版的主題只能設置為 local )
+  internal_provider: local
 
-  # pjax
-  pjax:
+  # The CDN provider of third party scripts (第三方 js 的 cdn 配置)
+  # option: local/jsdelivr/unpkg/cdnjs/custom
+  # when set it to local, you need to install hexo-butterfly-extjs
+  third_party_provider: jsdelivr
 
-  # comments
-  gitalk:
-  gitalk_css:
-  blueimp_md5:
-  valine:
-  disqusjs:
-  disqusjs_css:
-  utterances:
-  twikoo:
-  waline:
-  giscus:
+  # Add version number to CDN, true or false
+  version: false
 
-  # share
-  addtoany:
-  sharejs:
-  sharejs_css:
+  # Custom format
+  # For example: https://cdn.staticfile.org/${cdnjs_name}/${version}/${min_cdnjs_file}
+  custom_format:
 
-  # search
-  local_search:
-  algolia_js:
-  algolia_search_v4:
-  instantsearch_v4:
-
-  # math
-  mathjax:
-  katex:
-  katex_copytex:
-  katex_copytex_css:
-  mermaid:
-
-  # count
-  busuanzi:
-
-  # background effect
-  canvas_ribbon:
-  canvas_fluttering_ribbon:
-  canvas_nest:
-
-  lazyload:
-  instantpage:
-  typed:
-  pangu:
-
-  # photo
-  fancybox_css_v4:
-  fancybox_v4:
-  medium_zoom:
-
-  # snackbar
-  snackbar_css:
-  snackbar:
-
-  # effect
-  activate_power_mode:
-  fireworks:
-  click_heart:
-  ClickShowText:
-
-  # fontawesome
-  fontawesomeV6:
-
-  # Conversion between Traditional and Simplified Chinese
-  translate:
-
-  # flickr-justified-gallery
-  flickr_justified_gallery_js:
-  flickr_justified_gallery_css:
-
-  # aplayer
-  aplayer_css:
-  aplayer_js:
-  meting_js:
-
-  # Prism.js
-  prismjs_js:
-  prismjs_lineNumber_js:
-  prismjs_autoloader:
+  option:
+    # main_css:
+    # main:
+    # utils:
+    # translate:
+    # local_search:
+    # algolia_js:
+    # algolia_search_v4:
+    # instantsearch_v4:
+    # pjax:
+    # gitalk:
+    # gitalk_css:
+    # blueimp_md5:
+    # valine:
+    # disqusjs:
+    # disqusjs_css:
+    # twikoo:
+    # waline_js:
+    # waline_css:
+    # sharejs:
+    # sharejs_css:
+    # mathjax:
+    # katex:
+    # katex_copytex:
+    # mermaid:
+    # canvas_ribbon:
+    # canvas_fluttering_ribbon:
+    # canvas_nest:
+    # lazyload:
+    # instantpage:
+    # typed:
+    # pangu:
+    # fancybox_css_v4:
+    # fancybox_v4:
+    # medium_zoom:
+    # snackbar_css:
+    # snackbar:
+    # activate_power_mode:
+    # fireworks:
+    # click_heart:
+    # ClickShowText:
+    # fontawesomeV6:
+    # flickr_justified_gallery_js:
+    # flickr_justified_gallery_css:
+    # aplayer_css:
+    # aplayer_js:
+    # meting_js:
+    # prismjs_js:
+    # prismjs_lineNumber_js:
+    # prismjs_autoloader:
+    # artalk_js:
+    # artalk_css:
+    # busuanzi:
